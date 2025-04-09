@@ -1,5 +1,6 @@
-from ..fields.base import Field
-from ..fields.integer import IntegerField
+from lightorm.fields.base import Field
+from lightorm.fields.integer import IntegerField
+
 
 class ModelMeta(type):
 
@@ -9,8 +10,8 @@ class ModelMeta(type):
             if isinstance(field, Field):
                 fields[field_name] = field
 
-        # if not cls._check_primary_key(fields):
-        #     fields["id"] = IntegerField(primary_key=True, auto_increment=True)
+        if not any(field.primary_key for field in fields.values()):
+            fields["id"] = IntegerField(primary_key=True, auto_increment=True)
 
         attrs["_fields"] = fields
         attrs["__tablename__"] = attrs.get("__tablename__", name.lower())

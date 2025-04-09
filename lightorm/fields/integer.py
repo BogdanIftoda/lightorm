@@ -1,4 +1,4 @@
-from .base import Field
+from lightorm.fields.base import Field
 
 
 class IntegerField(Field):

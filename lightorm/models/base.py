@@ -1,4 +1,4 @@
-from ..meta.model_meta import ModelMeta
+from lightorm.meta.model_meta import ModelMeta
 
 
 class Model(metaclass=ModelMeta):

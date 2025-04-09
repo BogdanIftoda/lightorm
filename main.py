@@ -10,7 +10,7 @@ db_config = {
     "type": "sqlite",
 }
 
-# ✅ Initialize DB Once (No More init_db!)
+# Initialize DB Once
 DatabaseFactory.init_db(db_config)
 
 
@@ -21,16 +21,16 @@ class User(Model):
     age = IntegerField(min_value=18, required=True)
 
 
-# ✅ Create a new record
+# Create a new record
 user = User.create(name="John Doe", age=30)
 print(f"User created: {user}")
 
-# ✅ Retrieve a record
+# Retrieve a record
 retrieved_user = User.get(1)
 print(f"User found: {retrieved_user}" if retrieved_user else "User not found.")
 
-# ✅ Update a record
+# Update a record
 User.update(pk=1, name="Johnny", age=35)
 
-# ✅ Delete a record
+# Delete a record
 User.delete(pk=1)
